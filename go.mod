@@ -26,6 +26,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/siddontang/go-log v0.0.0-20180807004314-8d05993dda07
 	github.com/siddontang/go-mysql v1.1.0
+	github.com/sony/sonyflake v1.0.0
 	github.com/streadway/amqp v1.0.0
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	github.com/yuin/gopher-lua v0.0.0-20200603152657-dc2b0ca8b37e
@@ -34,7 +35,7 @@ require (
 	go.mongodb.org/mongo-driver v1.4.0
 	go.uber.org/atomic v1.6.0
 	go.uber.org/zap v1.15.0
+	golang.org/x/sys v0.21.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.3.0
-	github.com/sony/sonyflake v1.0.0
 )
