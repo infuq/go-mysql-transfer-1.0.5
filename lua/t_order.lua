@@ -8,6 +8,7 @@ local orderNo = row["t_order_no"]
 local userId = row["t_user_id"]
 
 
+
 local result = {}
 result["_class"] = "com.infuq.model.Order"
 
