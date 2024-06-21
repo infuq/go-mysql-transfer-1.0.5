@@ -89,7 +89,7 @@ func (s *StockService) Run() error {
 	startTime := dates.NowMillisecond()
 	log.Println(fmt.Sprintf("bulk size: %d", global.Cfg().BulkSize))
 	for _, rule := range global.RuleInsList() {
-		if rule.OrderByColumn == "" {
+		if rule.OrderByColumn == "" {		
 			return errors.New("empty order_by_column not allowed")
 		}
 

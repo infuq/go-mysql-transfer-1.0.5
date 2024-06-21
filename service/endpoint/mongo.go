@@ -145,7 +145,12 @@ func (s *MongoEndpoint) Consume(from mysql.Position, rows []*model.RowRequest) e
 				case canal.InsertAction:
 					model = mongo.NewInsertOneModel().SetDocument(resp.Table)
 				case canal.UpdateAction:
-					model = mongo.NewUpdateOneModel().SetFilter(bson.M{"_id": resp.Id}).SetUpdate(bson.M{"$set": resp.Table})
+					if resp.Id != nil {
+						model = mongo.NewUpdateOneModel().SetFilter(bson.M{"_id": resp.Id}).SetUpdate(bson.M{"$set": resp.Table})
+					} else {
+						table := resp.Table
+						model = mongo.NewUpdateManyModel().SetFilter(table["filter"]).SetUpdate(bson.M{"$set": table})
+					}
 				case global.UpsertAction:
 					model = mongo.NewUpdateOneModel().SetFilter(bson.M{"_id": resp.Id}).SetUpsert(true).SetUpdate(bson.M{"$set": resp.Table})
 				case canal.DeleteAction:
