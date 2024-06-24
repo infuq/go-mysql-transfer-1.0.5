@@ -145,11 +145,11 @@ func (s *MongoEndpoint) Consume(from mysql.Position, rows []*model.RowRequest) e
 				case canal.InsertAction:
 					model = mongo.NewInsertOneModel().SetDocument(resp.Table)
 				case canal.UpdateAction:
-					// 之前只支持根据 _id 更新文档
+					// 之前只支持根据 _id 更新文档 
 					if resp.Id != nil {
 						model = mongo.NewUpdateOneModel().SetFilter(bson.M{"_id": resp.Id}).SetUpdate(bson.M{"$set": resp.Table})
 					} else {
-						// 二次开发, 根据条件更新文档
+						// 二次开发, 根据条件更新文档 
 						table := resp.Table
 						model = mongo.NewUpdateManyModel().SetFilter(table["filter"]).SetUpdate(bson.M{"$set": table})
 					}
